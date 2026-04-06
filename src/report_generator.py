@@ -1,7 +1,7 @@
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 
-def generate_pdf_report(df, ci_age, ci_interest, filename="report_mufti.pdf"):
+def generate_pdf_report(df, ci_age, ci_interest, filename="report_mufti_higo.pdf"):
     styles = getSampleStyleSheet()
     story = []
 
@@ -22,7 +22,7 @@ def generate_pdf_report(df, ci_age, ci_interest, filename="report_mufti.pdf"):
     add(f"Mean Skor Minat Digital: {ci_interest['mean']:.2f}")
     add(f"CI Skor Minat Digital: ({ci_interest['lower']:.2f}, {ci_interest['upper']:.2f})")
 
-    # Insight otomatis
+    # Insight
     add("<b>Key Insights</b>")
     umur_mean = df['Umur'].mean()
     add(f"- Mayoritas pengguna berada di usia produktif ({umur_mean:.0f} tahun).")
