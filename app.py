@@ -11,7 +11,7 @@ if os.path.exists("data/dummy_data.csv"):
 else:
     df = generate_dummy_data()
 
-st.title("Digital User Analysis Dashboard")
+st.title("Digital User Analysis Dashboard HIGO")
 st.dataframe(df.head())
 
 # Confidence Interval
