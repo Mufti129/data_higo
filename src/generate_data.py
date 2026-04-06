@@ -19,7 +19,7 @@ def generate_dummy_data(n=300, seed=42):
         "No Telepon": ["08" + ''.join([str(random.randint(0,9)) for _ in range(10)]) for _ in range(n)],
         "Tahun Lahir": np.random.randint(1980, 2005, n),
         "Merk HP": np.random.choice(brands, n),
-        "Minat Digital": np.random.choice(interests, n, p=[0.3, 0.4, 0.3]),
+        "Minat Digital": np.random.choice(interests, n, p=[0.3,0.4,0.3]),
         "Tipe Lokasi": np.random.choice(location_types, n)
     })
 
@@ -50,8 +50,3 @@ def generate_dummy_data(n=300, seed=42):
     )
 
     return df
-
-
-if __name__ == "__main__":
-    df = generate_dummy_data()
-    df.to_csv("data/dummy_data.csv", index=False)
