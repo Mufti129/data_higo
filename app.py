@@ -4,7 +4,7 @@ from src.generate_data import generate_dummy_data
 from src.analysis import confidence_interval
 from src.report_generator import generate_pdf_report
 
-# Load / generate data
+# Load 
 if os.path.exists("data/dummy_data.csv"):
     import pandas as pd
     df = pd.read_csv("data/dummy_data.csv")
@@ -18,11 +18,13 @@ st.dataframe(df.head())
 ci_age = confidence_interval(df["Umur"])
 ci_interest = confidence_interval(df["Skor Minat Digital"])
 
-st.subheader("Confidence Interval")
+st.subheader("Confidence Interval Umur")
 st.write(ci_age)
+
+st.subheader("Confidence Interval Minat Didital")
 st.write(ci_interest)
 
-# Insights dynamically
+# Insights
 st.subheader("Key Insights")
 umur_mean = df['Umur'].mean()
 top_login = df['Kategori Waktu Login'].value_counts().idxmax()
@@ -36,8 +38,8 @@ st.markdown(f"""
 - Lokasi terbanyak: {top_loc}
 """)
 
-# Generate PDF & download
-pdf_filename = "report_mufti.pdf"
+# Generate Report
+pdf_filename = "report_mufti_higo.pdf"
 if st.button("Generate PDF Report"):
     generate_pdf_report(df, ci_age, ci_interest, filename=pdf_filename)
     st.success("Report berhasil dibuat!")
