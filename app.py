@@ -1,10 +1,16 @@
+import os
 import streamlit as st
 import pandas as pd
 from src.analysis import confidence_interval
 from src.report_generator import generate_pdf_report
 
-df = pd.read_csv("data/dummy_data.csv")
+from src.generate_data import generate_dummy_data
+#df = pd.read_csv("data/dummy_data.csv")
 
+if os.path.exists("data/dummy_data.csv"):
+    df = pd.read_csv("data/dummy_data.csv")
+else:
+    df = generate_dummy_data()
 st.title("Digital User Analysis Dashboard")
 
 st.dataframe(df.head())
